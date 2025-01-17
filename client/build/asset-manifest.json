@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.de9f98cf.css",
+    "main.js": "/static/js/main.cc251ce9.js",
+    "pdfmake.js": "/static/js/pdfmake.4eaf54e3.chunk.js",
+    "canvg.js": "/static/js/canvg.0e9c6d7b.chunk.js",
+    "xlsx.js": "/static/js/xlsx.0e582593.chunk.js",
+    "static/media/Data_Grid.mp4": "/static/media/Data_Grid.cdfdac65d97a94a0c6be.mp4",
+    "index.html": "/index.html",
+    "main.de9f98cf.css.map": "/static/css/main.de9f98cf.css.map",
+    "main.cc251ce9.js.map": "/static/js/main.cc251ce9.js.map",
+    "pdfmake.4eaf54e3.chunk.js.map": "/static/js/pdfmake.4eaf54e3.chunk.js.map",
+    "canvg.0e9c6d7b.chunk.js.map": "/static/js/canvg.0e9c6d7b.chunk.js.map",
+    "xlsx.0e582593.chunk.js.map": "/static/js/xlsx.0e582593.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de9f98cf.css",
+    "static/js/main.cc251ce9.js"
+  ]
+}
