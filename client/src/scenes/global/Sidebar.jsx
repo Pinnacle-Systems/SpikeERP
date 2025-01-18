@@ -1,50 +1,108 @@
-import { useState } from 'react';
-import { ProSidebar, Menu, MenuItem } from 'react-pro-sidebar';
-import 'react-pro-sidebar/dist/css/styles.css';
-import { Link } from 'react-router-dom';
-import { tokens } from '../../theme';
-import { Box, IconButton, Typography, useTheme } from '@mui/material';
+import React, { useState } from 'react';
+import { styled } from '@mui/material/styles';
+import {
+  Box,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Tooltip,
+} from '@mui/material';
+import {
+  Dashboard as DashboardIcon,
+  Person as PersonIcon,
+  Menu as MenuIcon,
+} from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { push } from '../../redux/features/opentabs';
+import { ColorContext } from './ColorContext';
+import { useContext } from "react";
+const StyledListItemIcon = styled(ListItemIcon)(({ theme }) => ({
+  minWidth: '32px',
+  height: '32px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#FFFFFF',
+  borderRadius: '50%',
+  transition: 'transform 0.2s ease',
+  '&:hover': {
+    transform: 'scale(1.1)',
+    backgroundColor: theme.palette.action.hover,
+  },
+}));
 
-import CustomizedAccordions from './accordion'
-// Custom Item component for MenuItems
+const StyledListItemButton = styled(ListItemButton)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(0.5, 1),
+  '&:hover': {
+    backgroundColor: theme.palette.action.hover,
+  },
+}));
+
+const SidebarContainer = styled(Box)(({ theme, isCollapsed }) => ({
+  width: isCollapsed ? '50px' : '50px',
+  overflow: 'hidden',
+  backgroundColor: theme.palette.mode === 'dark' ? '#1E1E1E' : '#F9FAFB',
+  transition: 'width 0.3s ease, background-color 0.3s ease',
+  height: '100vh',
+  boxShadow: isCollapsed ? 'none' : '2px 0 4px rgba(0, 0, 0, 0.1)',
+  paddingTop: theme.spacing(1),
+  paddingLeft: "5px"
+}));
+
+const Sidebar = () => {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const dispatch = useDispatch();
+  const { color } = useContext(ColorContext);
 
 
-// function to get path name & change according to useState
-const getCurrentPathname = () => {
-    let path = window.location.pathname;
-    path = path.substring(1);
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
 
-    if (path === '') {
-        path = 'Dashboard';
-    } else {
-        let capitalized = path.charAt(0).toUpperCase() + path.slice(1);
-        path = capitalized;
-    }
+  return (
+    <SidebarContainer isCollapsed={isCollapsed}>
+      <List className="mt-3">
+        <Tooltip title="Dashboard" placement="right" disableHoverListener={!isCollapsed}>
+          <StyledListItemButton onClick={() => dispatch(push({ id: 1, name: 'DASHBOARD' }))}>
+            <StyledListItemIcon>
+              <DashboardIcon sx={{ color: color ? `${color}` : '#CA8A04', fontSize: '28px', background: "white" }} />
+            </StyledListItemIcon>
+            {!isCollapsed && (
+              <ListItemText
+                primary="Dashboard"
+                primaryTypographyProps={{
+                  fontSize: '0.875rem',
+                  fontWeight: '500',
+                }}
+                sx={{ ml: 1 }}
+              />
+            )}
+          </StyledListItemButton>
+        </Tooltip>
 
-    return path;
-};
-
-const Sidebar = ({ isCollapsed }) => {
-    return (
-        <Box
-            sx={{
-                overflow: "hidden",
-                width: isCollapsed ? '' : '100%',
-                '& .pro-sidebar-inner': {
-
-                    width: '100%',
-                },
-
-                '& .pro-inner-item': {
-                    padding: '5px 5px 25px 2px !important',
-                },
-            }}
-        >
-
-            <CustomizedAccordions />
-        </Box>
-    );
+        <Tooltip title="User" placement="right" disableHoverListener={!isCollapsed}>
+          <StyledListItemButton onClick={() => dispatch(push({ id: 4, name: 'User' }))}>
+            <StyledListItemIcon>
+              <PersonIcon sx={{ color: color ? `${color}` : '#CA8A04', fontSize: '28px', background: "white" }} />
+            </StyledListItemIcon>
+            {!isCollapsed && (
+              <ListItemText
+                primary="User"
+                primaryTypographyProps={{
+                  fontSize: '0.875rem',
+                  fontWeight: '500',
+                }}
+                sx={{ ml: 1 }}
+              />
+            )}
+          </StyledListItemButton>
+        </Tooltip>
+      </List>
+    </SidebarContainer>
+  );
 };
 
 export default Sidebar;
-

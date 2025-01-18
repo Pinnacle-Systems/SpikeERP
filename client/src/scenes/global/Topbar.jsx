@@ -1,58 +1,94 @@
-import { useContext, useState } from 'react';
-import * as React from 'react';
-import { Badge,  useTheme, } from '@mui/material';
-import { ColorModeContext, tokens } from '../../theme';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import { useContext, useState, useEffect } from "react";
+import * as React from "react";
+import { useTheme } from "@mui/material";
+import { MdLogout, MdClose } from "react-icons/md";
+import { ChromePicker } from "react-color";
+import { ColorContext } from "./ColorContext";
+import logo from "../../assets/l.png";
 
-const Topbar = ({ toggleSidebar }) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-  const colorMode = useContext(ColorModeContext);
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
+const Topbar = ({ onLogout }) => {
+  const { color, setColor } = useContext(ColorContext);
+  const [showPicker, setShowPicker] = useState(false);
 
+  const DEFAULT_COLOR = "#056028"; 
+  useEffect(() => {
+    const storedColor = localStorage.getItem("themeColor");
+    if (storedColor) {
+      setColor(storedColor);
+    } else {
+      setColor(DEFAULT_COLOR);
+    }
+  }, [setColor]);
 
+  const handleColorChange = (newColor) => {
+    const selectedColor = newColor.hex;
+    setColor(selectedColor);
+    localStorage.setItem("themeColor", selectedColor); 
+  };
+
+  const handleResetColor = () => {
+    setColor(DEFAULT_COLOR);
+    localStorage.setItem("themeColor", DEFAULT_COLOR);
+  };
 
   return (
-    <div className='top-Bar-style flex items-center justify-between text-white font-bold text-lg h-full'
-    >
-      <div className='p-1'>
-        <img
-          src={`../../assets/pin.a0917c99.png`}
-          alt="user-profile"
-          className='w-44 bg-white rounded-lg'
-          style={{ cursor: 'pointer' }}
-        />
+    <div className="flex h-14">
+      <div className="bg-[#1F2937] w-1/2 flex items-center px-4">
+        <img src={logo} alt="logo" className="w-44 cursor-pointer" />
       </div>
 
-      <div className='text-[24px] font-normal'>Management Information Dashboard</div>
-      <div>
-        <button onClick={colorMode.toggleColorMode}>
-          <DarkModeOutlinedIcon className='text-white' />
-        </button>
-        <button>
-          <Badge variant="dot" color="secondary">
-            <NotificationsOutlinedIcon className='text-white' />
-          </Badge>
-        </button>
-        <button>
-          <SettingsOutlinedIcon className='text-white' />
-        </button>
-        <button>
-          <PersonOutlinedIcon className='text-white' />
-        </button>
+      <div
+        className="w-1/2 flex justify-between items-center px-4 text-white"
+        style={{ backgroundColor: color }}
+      >
+        <div className="text-xl font-semibold">Management Information Dashboard</div>
+
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setShowPicker(!showPicker)}
+            className="text-white hover:text-gray-300 text-sm px-2 py-1 border rounded-lg"
+          >
+            Select Theme
+          </button>
+
+          {showPicker && (
+            <div className="absolute top-16 right-4 z-50 bg-white rounded-lg shadow-lg p-2">
+              <div className="flex justify-end mb-2">
+                <button
+                  onClick={() => setShowPicker(false)}
+                  className="text-gray-700 hover:text-gray-900"
+                >
+                  <MdClose size={20} />
+                </button>
+              </div>
+
+              <ChromePicker
+                color={color}
+                onChange={handleColorChange}
+                disableAlpha={true}
+              />
+
+             
+              <button
+                onClick={handleResetColor}
+                className="mt-2 w-full bg-blue-500 text-white text-sm px-2 py-1 rounded-lg hover:bg-blue-600"
+              >
+                Set Default
+              </button>
+            </div>
+          )}
+
+          
+          <button
+            onClick={onLogout}
+            className="text-white hover:text-gray-300 text-2xl focus:outline-none"
+          >
+            <MdLogout />
+          </button>
+        </div>
       </div>
     </div>
-
   );
-
 };
 
 export default Topbar;

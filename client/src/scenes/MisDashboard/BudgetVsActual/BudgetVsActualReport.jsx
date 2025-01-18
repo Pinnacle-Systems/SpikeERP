@@ -3,6 +3,7 @@ import { useGetBudgetVsActualQuery } from '../../../redux/service/misDashboardSe
 import DropdownCom from '../../../Ui Component/modelParam';
 import { useGetBuyerNameQuery, useGetFinYearQuery, useGetMonthQuery } from '../../../redux/service/commonMasters';
 import { HiOutlineRefresh } from 'react-icons/hi';
+import { height } from '@amcharts/amcharts4/.internal/core/utils/Utils';
 
 const ComparisonTableWithProgressBar = () => {
     const [selectedOption, setSelectedOption] = useState('Detailed');
@@ -109,7 +110,7 @@ const ComparisonTableWithProgressBar = () => {
                         </div>
                     </div>
                 </div>
-                <table className="table w-[100%]">
+                <table className="table w-[100%] h-[370] bg-white ">
                     <thead className="bg-[#ADB612] w-[100%]">
                         <tr className='w-full'>
                             <th className='text-[14px] font-semibold py-2 border border-gray-300'>S/No</th>
@@ -139,7 +140,7 @@ const ComparisonTableWithProgressBar = () => {
                                             {subIndex === 0 && (
                                                 <>
                                                     <td
-                                                        className={`text-[13px] text-black border border-gray-300 py-1 ${order.typeName === 'BUDGET' ? 'bg-white' : ''}`}
+                                                        className={`text-[13px] text-black  border border-gray-300 py-1 ${order.typeName === 'BUDGET' ? 'bg-white' : ''}`}
                                                         rowSpan={groupedOrders[key].length}
                                                     >
                                                         {index + 1}

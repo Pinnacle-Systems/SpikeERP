@@ -4,7 +4,7 @@ import PieChart from './PieChart'
 
 const OrdersInHand = () => {
     return (
-        <CardWrapper name={"Orders in Hand Buyer Wise"}>
+        <CardWrapper heading={"Orders in Hand Buyer Wise"}>
             <PieChart />
         </CardWrapper>
     )

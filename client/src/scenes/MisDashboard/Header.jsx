@@ -16,25 +16,8 @@ const Header = () => {
     console.log(previousYear, 'rep');
     return (
         <>
-            <div className='bg-[#ADB612] h-[30px] flex justify-center items-center font-semibold'>
-
-                <div className='flex  group w-full justify-end relative'>
-                    <DropdownData selectedYear={selectedYear} setSelectedYear={setSelectedYear} previousYear={previousYear} setPreviousYear={setPreviousYear} />
-
-                    <div>   <button
-                        className=' bg-sky-500 rounded-sm p-1 flex items-center justify-center h-[30px] text-center font-normal text-[16px] border-2 border-[#E0E0E0]'
-                        onClick={() => refetch()}>
-                        <HiOutlineRefresh />
-                    </button>
-                        {/* <span className='group-hover:opacity-100 transition-opacity bg-gray-800 px-1 bottom-2 right-3 text-sm text-gray-100 rounded-md -translate-x-1/2 absolute opacity-0 z-40'>
-                            Refresh
-                        </span> */}
-                    </div>
-                </div>
-
-
-            </div>
-            <div className='h-[25%]'>
+          
+            <div>
                 <NumericCard misData={misData} />
             </div>
         </>

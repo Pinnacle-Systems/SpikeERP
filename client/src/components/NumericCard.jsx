@@ -1,7 +1,7 @@
 import React from 'react'
 import { DOWN_TREND_ICON, UP_TREND_ICON } from '../icons';
 import { getDifferenceInPercentage } from '../helper/accumulation';
-import CardWrapper from './CardWrapper';
+import CardWrapperN from './CardWrapper1';
 
 const NumericCard = ({ misData }) => {
 
@@ -58,43 +58,41 @@ const NumericCard = ({ misData }) => {
     return (
         <div className='flex justify-around w-full h-full'>
             {data.map((val, i) =>
-                <div key={i} className='w-[24.5%] h-full text-center '>
-                    <CardWrapper name={val.name} >
-                        <div className={`h-full grid items-center bg-white border-4 cuttedBorder${i + 1}`}
-                        >
-                            <div className='flex justify-between px-4'>
-                                <div>
-                                    <h1 className='text-sm font-semibold'>Qty</h1>
-                                    <span className='text-lg font-bold'>
-                                        {val.qty}
-                                    </span></div>
-                                <span className='text-lg font-bold'>
-                                    <h1 className='text-sm font-semibold'>Value</h1>
-                                    {val.value}
-                                </span>
-                            </div>
-                            <div className='flex justify-between px-4 text-gray-800 text-[12px]'>
-                                <span>
-                                    <div className='font-medium '>
-                                        Prev Qty
-                                    </div>
-                                    <div>
-                                        {val.previousQty}
-                                    </div>
-                                </span>
-                                <span>
-                                    <div className='font-medium '>Prev Val</div>
-                                    <div>{val.previousValue}</div>
-                                </span>
-                                {/* <div className='grid items-center justify-center text-center'>
-                                    <div className='text-center '>Trend</div>
-                                    <div className='text-sm flex items-center justify-center'>
-                                        {val.trend}
-                                    </div>
-                                </div> */}
-                            </div>
-                        </div>
-                    </CardWrapper>
+                <div key={i} className='w-[24.5%] text-center '>
+                    <CardWrapperN heading={val.name} >
+                    <div
+  className="h-full w-full bg-gray-50 border rounded-md shadow-md p-2"
+>
+  {/* Header Section */}
+  <div className="flex justify-between items-center mb-2">
+    <div>
+      <h1 className="text-xs font-medium text-gray-500">Qty</h1>
+      <span className="text-lg font-bold text-blue-600">{val.qty}</span>
+    </div>
+    <div className="text-right">
+      <h1 className="text-xs font-medium text-gray-500">Value</h1>
+      <span className="text-lg font-bold text-green-600">{val.value}</span>
+    </div>
+  </div>
+
+  {/* Divider */}
+  <hr className="border-gray-200 my-1" />
+
+  {/* Details Section */}
+  <div className="flex justify-between text-xs text-gray-600">
+    <div>
+      <div className="font-medium">Prev Qty</div>
+      <div className="text-gray-800">{val.previousQty}</div>
+    </div>
+    <div>
+      <div className="font-medium">Prev Val</div>
+      <div className="text-gray-800">{val.previousValue}</div>
+    </div>
+  </div>
+</div>
+
+
+                    </CardWrapperN>
                 </div>
             )}
         </div>

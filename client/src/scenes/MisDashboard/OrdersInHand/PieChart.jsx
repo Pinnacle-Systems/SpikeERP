@@ -14,7 +14,7 @@ const PieChart = () => {
     const ordersInHandBuyerWise = data?.data || 'No orders In Hand';
     console.log(ordersInHandBuyerWise, 'order');
     return (
-        <div className='w-full h-full '>
+        <div className='w-full h-[350px] bg-white rounded-lg '>
             <div className='flex w-full justify-end'>
                 <DropdownData selectedYear={selectedYear} setSelectedYear={setSelectedYear} />
                 <div className='flex  group relative'>
