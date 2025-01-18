@@ -4,8 +4,7 @@ import {
     Tooltip,
   } from '@mui/material';
 import { ColorContext } from '../scenes/global/ColorContext';
-const FilterOptions = ({ onFilterClick, onInfoShowText, isGroupHover }) => {
-    const { color } = useContext(ColorContext);
+const FilterOptions = ({ onFilterClick,isGroupHover }) => {
 
     return (
         <div

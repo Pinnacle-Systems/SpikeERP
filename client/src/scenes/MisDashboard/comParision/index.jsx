@@ -5,8 +5,10 @@ import YearlyComChart from './YearlyCompChart'
 
 const YearlyComparisionBuyerWise = () => {
     return (
-        <CardWrapper name={"Buyer Wise Order Qty Yearly Comparison"}>
-            < YearlyComChart />
+        <CardWrapper heading={"Buyer Wise Order Qty Yearly Comparison"}>
+             <div className='w-full h-[350px] bg-white rounded-lg '>
+           < YearlyComChart />
+            </div> 
         </CardWrapper>
     )
 }

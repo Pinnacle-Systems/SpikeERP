@@ -1,16 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { push, remove } from "../../redux/features/opentabs";
-
 import { CLOSE_ICON, DOUBLE_NEXT_ICON } from "../../icons";
 import { useState } from "react";
 import useOutsideClick from "../../CustomHooks/handleOutsideClick";
 import PoRegister from "../poRegister";
-
 import { MisDashboard } from "../../scenes"
-
-import Form from '../form'
-import OrderMgmtNumCard from "../../components/OrderMgmtCard";
 import OrderManagement from "../OrderManagement";
 const ActiveTabList = () => {
     const openTabs = useSelector((state) => state.openTabs);

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { ColorContext } from '../scenes/global/ColorContext';
-import FilterOptions from './FilterOptions';
+import FilterOptions1 from './FilterOptionsN';
 
 const CardWrapperN = ({ heading, children, onFilterClick, onInfoShowText, showFilter = true }) => {
     const { color } = useContext(ColorContext);
 
     return (
-        <div className="text-center border border-gray-300  rounded-lg shadow-lg bg-white h-[125px] w-full mb-8">
+        <div className="group text-center border border-gray-300 rounded-lg shadow-lg bg-white h-[115px] w-full mb-8">
             {/* Header Section */}
             <div
                 className="text-center rounded-t-lg flex items-center justify-between h-[30px] shadow-md px-4"
@@ -21,7 +21,7 @@ const CardWrapperN = ({ heading, children, onFilterClick, onInfoShowText, showFi
 
                 {/* Right Corner (Filter Options) */}
                 {showFilter && (
-                    <FilterOptions onFilterClick={onFilterClick} onInfoShowText={onInfoShowText} />
+                    <FilterOptions1 onFilterClick={onFilterClick} onInfoShowText={onInfoShowText} />
                 )}
             </div>
 

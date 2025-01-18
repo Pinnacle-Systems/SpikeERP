@@ -1,6 +1,4 @@
 import React from 'react'
-import { DOWN_TREND_ICON, UP_TREND_ICON } from '../icons';
-import { getDifferenceInPercentage } from '../helper/accumulation';
 import CardWrapperN from './CardWrapper1';
 
 const NumericCard = ({ misData }) => {

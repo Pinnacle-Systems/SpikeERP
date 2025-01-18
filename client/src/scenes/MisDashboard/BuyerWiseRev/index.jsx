@@ -11,7 +11,7 @@ const BuyerWiseRevenue = () => {
 
     return (
 
-        <CardWrapper name={"Buyer Wise Revenue"}>
+        <CardWrapper heading={"Buyer Wise Revenue"}>
 
             <div className='flex w-full justify-end'>
                 <DropdownData selectedYear={selectedYear} setSelectedYear={setSelectedYear} />                <div className='flex  group relative'>

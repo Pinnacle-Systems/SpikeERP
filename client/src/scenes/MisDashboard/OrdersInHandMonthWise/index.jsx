@@ -4,7 +4,7 @@ import LineChart from './LineChart'
 
 const OrdersInHandMonthWise = () => {
     return (
-        <div className=' '> <CardWrapper heading={"Orders Pln Vs Act Upcomming And Completed 3 Mon"}>
+        <div className=' '> <CardWrapper heading={"Orders Pln Vs Act Upcomming And Completed 3 Mon"} showFilter= {false} >
             <LineChart />
         </CardWrapper></div>
     )
