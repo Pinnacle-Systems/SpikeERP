@@ -111,7 +111,7 @@ const ComparisonTableWithProgressBar = () => {
                     </div>
                 </div>
                 <table className="table w-[100%] h-[370] bg-white ">
-                    <thead className="bg-[#ADB612] w-[100%]">
+                    <thead className="bg-gray-200 w-[100%]">
                         <tr className='w-full'>
                             <th className='text-[14px] font-semibold py-2 border border-gray-300'>S/No</th>
                             <th className='text-[14px] font-semibold border border-gray-300'>Order No</th>

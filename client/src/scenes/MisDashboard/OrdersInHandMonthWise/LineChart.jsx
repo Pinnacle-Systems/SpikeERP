@@ -1,7 +1,6 @@
 import React from 'react'
 import { useGetMisDashboardOrdersInHandMonthWiseQuery } from '../../../redux/service/misDashboardService'
 import Lchart from '../../../components/LineChart';
-import { HiOutlineRefresh } from 'react-icons/hi';
 
 const LineChart = () => {
     const { data, refetch } = useGetMisDashboardOrdersInHandMonthWiseQuery({})

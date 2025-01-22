@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Tooltip } from '@mui/material';
 
-const FilterOptions = ({ onFilterClick, onInfoShowText }) => {
+const FilterOptions = ({ onFilterClick, onInfoShowText,showModel, setShowModel }) => {
     return (
         <div
             className="flex items-center space-x-4 p-1 rounded-lg transition-all duration-300 

@@ -1,13 +1,20 @@
 import React from 'react'
+import { useState } from 'react';
 import CardWrapperN from './CardWrapper1';
+import ModelMultiSelect from './ModelMultiSelect';
+import Movable from './Movable';
+import { useContext } from 'react';
+import { ColorContext } from '../scenes/global/ColorContext';
 
-const NumericCard = ({ misData }) => {
-
+const NumericCard = ({ misData ,selectedYear,setSelectedYear}) => {
+  const {color} = useContext(ColorContext); 
     const totalTurnOver = misData?.data?.totalTurnOver;
     const profit = misData?.data?.profit;
     const newCustomers = misData?.data?.newCustomers;
     const topCustomers = misData?.data?.topCustomers;
     const loss = misData?.data?.loss;
+    const [showModel, setShowModel] = useState(false);
+
     const data = [
         {
             name: "Turn Over",
@@ -53,11 +60,25 @@ const NumericCard = ({ misData }) => {
             previousQty: `₹${(loss?.prevQty || 0).toLocaleString()}`,
         },
     ]
+    const onFilterClick = () => {
+      setShowModel(!showModel);
+    };
+    
     return (
         <div className='flex justify-around w-full h-full'>
+           {showModel && (
+        <Movable divId="cardMovable">
+          <ModelMultiSelect
+          selectedYear={selectedYear}
+          setSelectedYear={setSelectedYear}
+          showModel= {showModel} setShowModel = {setShowModel}
+           color={color}
+          />
+        </Movable>
+      )}
             {data.map((val, i) =>
                 <div key={i} className='w-[24.5%] text-center '>
-                    <CardWrapperN heading={val.name} >
+                    <CardWrapperN heading={val.name} showModel= {showModel} setShowModel= {setShowModel} onFilterClick = {onFilterClick}  >
                     <div
   className="h-full w-full bg-gray-50 border rounded-md shadow-md p-2"
 >

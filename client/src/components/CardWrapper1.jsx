@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { ColorContext } from '../scenes/global/ColorContext';
 import FilterOptions1 from './FilterOptionsN';
+import { set } from 'lodash';
 
-const CardWrapperN = ({ heading, children, onFilterClick, onInfoShowText, showFilter = true }) => {
+const CardWrapperN = ({ heading, children, onFilterClick, onInfoShowText, showFilter = true, 
+}) => {
     const { color } = useContext(ColorContext);
 
     return (

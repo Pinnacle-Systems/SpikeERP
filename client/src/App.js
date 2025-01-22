@@ -30,10 +30,10 @@ function App() {
                 <div >
                 <Topbar onLogout={handleLogout} />
                 <div className='flex'>
-                  <div className="flex float-left h-full side-bar w-auto">
+                  <div className="flex float-left h-full  side-bar w-auto">
                     <Sidebar />
                   </div>
-                  <div className="bg-gray-200 float-right w-auto flex-grow">
+                  <div className="bg-gray-200 float-right  w-auto flex-grow">
                     <ActiveTabList />
                   </div>
                 </div>

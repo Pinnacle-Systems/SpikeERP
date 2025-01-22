@@ -281,11 +281,7 @@ export async function getShortShipmentRatio(req, res) {
         ROUND((shipQty - orderQty) / orderQty * 100, 2) AS difference_percentage
     FROM 
         MISORDSALESVAL
-    WHERE 
-        status = 'Completed' 
-        AND finyr = '${filterYear}'
-        AND customer = '${filterSupplier}'
-        AND ACTDELMON = '${filterMonth}'
+   
     ORDER BY 
         difference_percentage DESC
  `
