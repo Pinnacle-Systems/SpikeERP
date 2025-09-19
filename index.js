@@ -51,7 +51,7 @@ app.use('/misDashboard', misDashboard)
 app.use('/ordManagement', ordManagement)
 
 app.use('/user', user)
-const PORT = 9001;
+const PORT = 9078 || process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
