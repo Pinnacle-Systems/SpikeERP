@@ -7,7 +7,7 @@ const Header = ({ setYear, year, setMonth, month, setDate, date, setSelectedArti
     console.log(date, 'date');
 
     const quartelyData = [
-        {
+        { 
             q: 'Q1',
             month: [
                 { id: 4, month: 'APR' }, { id: 5, month: 'MAY' }, { id: 6, month: 'JUN' }

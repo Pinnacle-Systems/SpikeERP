@@ -1,16 +1,18 @@
 import { useContext, useState, useEffect } from "react";
 import * as React from "react";
-import { useTheme } from "@mui/material";
 import { MdLogout, MdClose } from "react-icons/md";
 import { ChromePicker } from "react-color";
 import { ColorContext } from "./ColorContext";
 import logo from "../../assets/l.png";
+import { FaDatabase, FaMoneyBill } from "react-icons/fa"; 
+import Tooltip from "@mui/material/Tooltip";
 
-const Topbar = ({ onLogout }) => {
+
+const Topbar = ({ onLogout,selectedButton,setSelectedButton }) => {
   const { color, setColor } = useContext(ColorContext);
   const [showPicker, setShowPicker] = useState(false);
 
-  const DEFAULT_COLOR = "#056028"; 
+  const DEFAULT_COLOR = "#056028";
   useEffect(() => {
     const storedColor = localStorage.getItem("themeColor");
     if (storedColor) {
@@ -23,7 +25,7 @@ const Topbar = ({ onLogout }) => {
   const handleColorChange = (newColor) => {
     const selectedColor = newColor.hex;
     setColor(selectedColor);
-    localStorage.setItem("themeColor", selectedColor); 
+    localStorage.setItem("themeColor", selectedColor);
   };
 
   const handleResetColor = () => {
@@ -68,7 +70,7 @@ const Topbar = ({ onLogout }) => {
                 disableAlpha={true}
               />
 
-             
+
               <button
                 onClick={handleResetColor}
                 className="mt-2 w-full bg-blue-500 text-white text-sm px-2 py-1 rounded-lg hover:bg-blue-600"
@@ -78,7 +80,47 @@ const Topbar = ({ onLogout }) => {
             </div>
           )}
 
-          
+          {/* ERP Button */}
+          <Tooltip title="ERP" arrow open={selectedButton === "erp"}>
+            <button
+              onClick={() => setSelectedButton("erp")}
+              className={`p-2 rounded-lg ${selectedButton === "erp"
+                  ? "bg-white text-gray-800"
+                  : "bg-gray-700 hover:bg-blue-500 text-gray-300"
+                }`}
+              style={{
+                minWidth: "30px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                color: selectedButton === "erp" ? color : "",
+              }}
+            >
+              <FaDatabase size={14} />
+            </button>
+          </Tooltip>
+
+          {/* Payroll Button */}
+          <Tooltip title="Payroll" arrow open={selectedButton === "payRoll"}>
+            <button
+              onClick={() => setSelectedButton("payRoll")}
+              className={`p-2 rounded-lg ${selectedButton === "payRoll"
+                  ? "bg-white text-gray-800"
+                  : "bg-gray-700 hover:bg-blue-500 text-gray-300"
+                }`}
+              style={{
+                minWidth: "30px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                color: selectedButton === "payRoll" ? color : "",
+              }}
+            >
+              <FaMoneyBill size={14} />
+            </button>
+          </Tooltip>
+
+
           <button
             onClick={onLogout}
             className="text-white hover:text-gray-300 text-2xl focus:outline-none"

@@ -263,7 +263,6 @@ export async function getActualVsBudget(req, res) {
         await connection.close();
     }
 }
-
 export async function getShortShipmentRatio(req, res) {
     const connection = await getConnection(res)
     try {
@@ -281,11 +280,14 @@ export async function getShortShipmentRatio(req, res) {
         ROUND((shipQty - orderQty) / orderQty * 100, 2) AS difference_percentage
     FROM 
         MISORDSALESVAL
-   
+    WHERE 
+        status = 'Completed' 
+        AND finyr = '${filterYear}'
+        AND customer = '${filterSupplier}'
+        AND ACTDELMON = '${filterMonth}'
     ORDER BY 
         difference_percentage DESC
  `
- console.log(sql,"sql for Short shipment")
         } else {
             res.status(200).json({ message: 'filterMonth and filterSupplier are required' });
             return;
